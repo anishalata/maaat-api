@@ -28,9 +28,9 @@ def analyze_csv():
     if 'file' not in request.files:
         print("No file part in the request")
         return jsonify({'error': 'No file part'}), 400
-    
+
     file = request.files['file']
-    
+
     if file.filename == '':
         print("No selected file")
         return jsonify({'error': 'No selected file'}), 400
@@ -55,8 +55,8 @@ def analyze_csv():
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # Specify the model to use (e.g., "gpt-4")
             messages=[
-                {"role": "system", "content": "You are a data analyst. Analyze the given sales data and provide insights."},
-                {"role": "user", "content": f"Analyze the following sales dataset and provide key insights: {data_json}"}
+                {"role": "system", "content": "Analyze the provided dataset for counties affected by Hurricane Katrina in Louisiana, focusing on the varying levels of total risk, population size, and elevation. Based on these factors, assign specific water allocation percentages for each county, clearly explaining the rationale behind each percentage. Include the counties Acadia Parish, Avoyelles Parish, and Beauregard Parish in your analysis, specifying their populations, total risk levels, and elevation details. Provide the analysis in a single, coherent paragraph."},
+                {"role": "user", "content": f"Analyze the following dataset and provide key insights: {data_json}"}
             ]
         )
 
