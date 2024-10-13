@@ -1,4 +1,4 @@
 Flask
 pandas
-openai
+pip install openai==0.28
 python-dotenv
